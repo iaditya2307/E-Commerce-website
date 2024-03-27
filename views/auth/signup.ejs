@@ -1,31 +1,46 @@
-<% layout('layouts/boilerplate') %>
+<%-include('../partials/header')%>
+<%-include('../partials/navbar')%>
+<link rel="stylesheet" href="/css/signup.css">
 
-    <div class="row">
-       <div class="col-md-6 mx-auto"> 
-         <%- include('../partials/flash') %>
-         <h1 class="display-6">Sign up</h1>
-         <form action="/register" method="POST">
+
+
+<div class="row" style="margin-top: 80px;">
+    <div class="col-6 mx-auto">
+        <h1 class="display-6">Sign-up Form</h1>
+        <form action="/register" method="POST">
             <div class="mb-3">
-                <label class="form-label" for="username">Username:</label>
-                <input class="form-control" type="text" name="username" id="username" placeholder="Username">
+                <label for="username" class="form-label">Username: </label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Name of User" required>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="email">Email:</label>
-                <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+                <label for="mail" class="form-label">Email: </label>
+                <input type="email" class="form-control" name="email" id="mail" placeholder="Email of the user" required>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="password">Password:</label>
-                <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+                <label for="gender" class="form-label">Gender: </label>
+                <input type="text" class="form-control" name="gender" id="gender" placeholder="gender of the user" required>
             </div>
-                 <button type="submit" class="btn btn-sm btn-success">SignUp</button>
-            <p class="fw-light mt-2"> Already have an account ,<a href="/login">Login</a> </p>
-
-         </form>
-
-        </div>
+            <div class="mb-3">
+                <p class="mt-2">Want to register as?</p>
+                <div>
+                    <label for="role" class="form-label">Buyer: </label>
+                    <input type="radio" class="form-check-input" name="role" id="role" placeholder="role of the user" value="buyer" required>
+                </div>
+                <div>
+                    <label for="role" class="form-label">Seller: </label>
+                    <input type="radio" class="form-check-input" name="role" id="role" placeholder="role of the user" value="seller" required>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password: </label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="password of the user" required>
+            </div>
+            <button type="submit" class="btn btn-sm btn-success">Signup</button>
+            <p class="mt-2">already have an account? <a href="/login">Login now</a></p>
+        </form>
     </div>
+</div>
 
 
-    </body>
-
-    </html>
+<script src="/js/script.js"></script>
+<%-include('../partials/footer')%>

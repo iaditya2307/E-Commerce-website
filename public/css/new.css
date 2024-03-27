@@ -1,0 +1,29 @@
+/* style.css */
+
+/* Set margin and padding to 0 for the entire page */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: aquamarine;
+}
+
+/* Add margin and padding to the form container */
+.row {
+    margin-top: 80px;
+}
+
+/* Style form labels */
+.form-label {
+    font-weight: bold;
+}
+
+/* Style form input fields */
+.form-control {
+    margin-bottom: 10px;
+}
+
+/* Style form submit button */
+.btn-success {
+    margin-top: 20px;
+}
+

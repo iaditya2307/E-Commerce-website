@@ -1,23 +1,38 @@
-const { string } = require("joi");
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 
-// schema me username aur password ki zarurat nahi hai kyuki passportlocalMongoose apne aap hi
-// username aur password apne aaap hi DataBase me add kardega
 const userSchema = new mongoose.Schema({
-  email:{
-    type:String,
-    trim:true,
-    required:true
-  }
+  // username - PLM(passport-local-mongoose)
+  // password - PLM(passport-local-mongoose)
+  email: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  role: {
+    type: String,
+    default: "buyer",
+  },
+  gender: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  wishlist: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
+  cart: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
 });
 
+userSchema.plugin(passportLocalMongoose); //always apply on schema
 
-// model se pehle schema ke baad
-
-userSchema.plugin(passportLocalMongoose);
-
-
-let Review = mongoose.model("User", userSchema);
-
-module.exports = Review;
+let User = mongoose.model("User", userSchema);
+module.exports = User;
